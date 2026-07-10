@@ -162,7 +162,7 @@ class LinkedList {
 
     // Extra credit 1: Inserts new nodes with the given values at the provided index position
     insertAt(index, ...values) {
-        if (this.size() < index || index < 0) {
+        if (this.size() <= index || index < 0) {
             throw new RangeError(`Index out of bounds`)
         }
 
@@ -189,13 +189,13 @@ class LinkedList {
         return this.toString()
     }
 
-    // Extra credit 2: Removed the node at the given index
+    // Extra credit 2: Remove the node at the given index
     removeAt(index) {
 
         if (this.head === null) {
             throw new Error("The list is already empty")
         }
-        if (index < 0 || index > this.size()) {
+        if (index < 0 || index >= this.size()) {
             throw new RangeError(`Index out of bounds`)
         }
 
@@ -213,7 +213,7 @@ class LinkedList {
     }
 }
 
-
+// Testing values
 let list = new LinkedList
 list.append("Amy")
 list.append("Joe")
@@ -224,7 +224,7 @@ list.append("Zaine")
 list.append("Simeon")
 list.append("Chris")
 list.append("Jimmy")
-console.log(JSON.stringify(list, null, 2));
+// console.log(JSON.stringify(list, null, 2));
 // console.log(list.size())
 // console.log(list.getHead())
 // console.log(list.getTail())
@@ -233,5 +233,5 @@ console.log(JSON.stringify(list, null, 2));
 // console.log(list.contains("Paul"))
 // console.log(list.findIndex("Xaden"))
 // console.log(list.toString())
-// console.log(list.insertAt(-1, "Persephone", "Maggie", "Harmony"))
+// console.log(list.insertAt(1, "Persephone", "Maggie", "Harmony"))
 // console.log(list.removeAt(8))
