@@ -191,7 +191,6 @@ class LinkedList {
 
     // Extra credit 2: Remove the node at the given index
     removeAt(index) {
-
         if (this.head === null) {
             throw new Error("The list is already empty")
         }
@@ -202,9 +201,9 @@ class LinkedList {
         if (index === 0) {
             this.pop()
         } else {
-            let target = this.at(index)
+            let parent = this.at(index -1)
+            let target = parent.nextNode
             let child = target.nextNode
-            let parent = this.at(index - 1)
 
             parent.nextNode = child
         }
