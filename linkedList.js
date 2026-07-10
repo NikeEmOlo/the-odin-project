@@ -54,6 +54,48 @@ class LinkedList {
             return count;
         }
     }
+
+    getHead() {
+        if (this.head === null) {
+            return undefined
+        } else {
+            return this.head
+        }
+    }
+
+    getTail() {
+        if (this.head === null) {
+            return undefined
+        } else {
+            let current = this.head
+            while (current.nextNode !== null) {
+                current = current.nextNode
+            }
+            return current
+        }
+    }
+
+    at(index) {
+        if (this.head === null) {
+            return undefined
+        } else {
+            let current = this.head
+            let count = 1;
+            while (current.nextNode !== null) {
+                if(count === index) {
+                    break;
+                }
+                count++
+                current = current.nextNode
+            }
+            if (count !== index && current.nextNode === null) {
+                return undefined
+            } else {
+                return current
+            }
+        }
+    }
+
 }
 
 class Node {
@@ -69,5 +111,10 @@ list.append("Amy")
 list.append("Joe")
 list.prepend("Aaron")
 list.append("Xaden")
+list.append("Zaine")
 console.log(JSON.stringify(list, null, 2));
-console.log(list.size())
+// console.log(list.size())
+// console.log(list.getHead())
+// console.log(list.getTail())
+console.log(list.at(7))
+
