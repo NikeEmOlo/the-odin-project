@@ -140,6 +140,22 @@ class LinkedList {
             return -1
         }
     }
+
+    toString() {
+        if (this.head === null) {
+            return ""
+        } else {
+            let current = this.head
+            let array = []
+            while (current.nextNode !== null) {
+                array.push(current.value)
+                current = current.nextNode
+            }
+            array.push(current.value)
+            array.push("null")
+            return array.join(" >> ")
+        }
+    }
 }
 
 class Node {
@@ -157,6 +173,8 @@ list.append("Joe")
 list.prepend("Aaron")
 list.append("Xaden")
 list.append("Zaine")
+list.append("Simeon")
+list.append("Chris")
 console.log(JSON.stringify(list, null, 2));
 // console.log(list.size())
 // console.log(list.getHead())
@@ -164,5 +182,6 @@ console.log(JSON.stringify(list, null, 2));
 // console.log(list.at(7))
 // console.log(list.pop())
 // console.log(list.contains("Paul"))
-console.log(list.findIndex("Xaden"))
+// console.log(list.findIndex("Xaden"))
+console.log(list.toString())
 
