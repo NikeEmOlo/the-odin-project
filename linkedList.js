@@ -156,6 +156,27 @@ class LinkedList {
             return array.join(" >> ")
         }
     }
+
+    insertAt(index, ...values) {
+        if (this.size() < index) {
+            throw new RangeError(`The list only has ${this.size()} items`)
+        }
+
+        if (this.head === null || this.at(index).nextNode === null) {
+            values.forEach((value) => {
+                this.append(value)
+            })
+        } else {
+            let current = this.at(index)
+            let end = current.nextNode
+            values.forEach((value) => {
+                current.nextNode = new Node(value)
+                current = current.nextNode
+            })
+            current.nextNode = end
+        }
+        return this.toString()
+    }
 }
 
 class Node {
@@ -183,5 +204,5 @@ console.log(JSON.stringify(list, null, 2));
 // console.log(list.pop())
 // console.log(list.contains("Paul"))
 // console.log(list.findIndex("Xaden"))
-console.log(list.toString())
-
+// console.log(list.toString())
+console.log(list.insertAt(8, "Persephone", "Maggie", "Harmony"))
