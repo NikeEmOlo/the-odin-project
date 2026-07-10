@@ -80,7 +80,7 @@ class LinkedList {
             return undefined
         } else {
             let current = this.head
-            let count = 1;
+            let count = 0;
             while (current.nextNode !== null) {
                 if(count === index) {
                     break;
@@ -158,11 +158,11 @@ class LinkedList {
     }
 
     insertAt(index, ...values) {
-        if (this.size() < index) {
-            throw new RangeError(`The list only has ${this.size()} items`)
+        if (this.size() < index || index < 0) {
+            throw new RangeError(`The index must be between 0 and ${this.size()} (inclusive).`)
         }
 
-        if (this.head === null || this.at(index).nextNode === null) {
+        if (this.head === null || this.size() === index) {
             values.forEach((value) => {
                 this.append(value)
             })
@@ -196,13 +196,14 @@ list.append("Xaden")
 list.append("Zaine")
 list.append("Simeon")
 list.append("Chris")
+list.append("Jimmy")
 console.log(JSON.stringify(list, null, 2));
 // console.log(list.size())
 // console.log(list.getHead())
 // console.log(list.getTail())
-// console.log(list.at(7))
+// console.log(list.at(0))
 // console.log(list.pop())
 // console.log(list.contains("Paul"))
 // console.log(list.findIndex("Xaden"))
 // console.log(list.toString())
-console.log(list.insertAt(8, "Persephone", "Maggie", "Harmony"))
+console.log(list.insertAt(-1, "Persephone", "Maggie", "Harmony"))
