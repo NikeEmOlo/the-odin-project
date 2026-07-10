@@ -96,6 +96,16 @@ class LinkedList {
         }
     }
 
+    pop() {
+        if (this.head === null) {
+            return undefined
+        } else {
+            let secondNode = this.head.nextNode
+            let firstNode = this.head
+            this.head = secondNode
+            return this.head
+        }
+    }
 }
 
 class Node {
@@ -116,5 +126,6 @@ console.log(JSON.stringify(list, null, 2));
 // console.log(list.size())
 // console.log(list.getHead())
 // console.log(list.getTail())
-console.log(list.at(7))
+// console.log(list.at(7))
+console.log(list.pop())
 
