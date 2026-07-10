@@ -159,7 +159,7 @@ class LinkedList {
 
     insertAt(index, ...values) {
         if (this.size() < index || index < 0) {
-            throw new RangeError(`The index must be between 0 and ${this.size()} (inclusive).`)
+            throw new RangeError(`Out of bounds`)
         }
 
         if (this.head === null || this.size() === index) {
@@ -175,6 +175,28 @@ class LinkedList {
             })
             current.nextNode = end
         }
+        return this.toString()
+    }
+
+    removeAt(index) {
+
+        if (this.head === null) {
+            throw new Error("The list is already empty")
+        }
+        if (index < 0 || index > this.size()) {
+            throw new RangeError(`Out of bounds`)
+        }
+
+        if (index === 0) {
+            this.pop()
+        } else {
+            let target = this.at(index)
+            let child = target.nextNode
+            let parent = this.at(index - 1)
+
+            parent.nextNode = child
+        }
+
         return this.toString()
     }
 }
@@ -206,4 +228,5 @@ console.log(JSON.stringify(list, null, 2));
 // console.log(list.contains("Paul"))
 // console.log(list.findIndex("Xaden"))
 // console.log(list.toString())
-console.log(list.insertAt(-1, "Persephone", "Maggie", "Harmony"))
+// console.log(list.insertAt(-1, "Persephone", "Maggie", "Harmony"))
+console.log(list.removeAt(8))
