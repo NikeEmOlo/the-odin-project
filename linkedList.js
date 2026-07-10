@@ -106,6 +106,22 @@ class LinkedList {
             return this.head
         }
     }
+
+    contains(data) {
+        if (this.head === null) {
+            return false
+        } else {
+            let current = this.head
+            while (current.nextNode !== null) {
+                if (current.value === data) {
+                    return true
+                } else {
+                    current = current.nextNode
+                }
+            }
+            return false
+        }
+    }
 }
 
 class Node {
@@ -127,5 +143,6 @@ console.log(JSON.stringify(list, null, 2));
 // console.log(list.getHead())
 // console.log(list.getTail())
 // console.log(list.at(7))
-console.log(list.pop())
+// console.log(list.pop())
+console.log(list.contains("Paul"))
 
