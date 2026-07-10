@@ -122,6 +122,24 @@ class LinkedList {
             return false
         }
     }
+
+    findIndex(data) {
+        if (this.head === null) {
+            return -1
+        } else {
+            let current = this.head
+            let count = 1
+            while (current.nextNode !== null) {
+                if (current.value === data) {
+                    return count
+                } else {
+                    current = current.nextNode
+                    count++
+                }
+            }
+            return -1
+        }
+    }
 }
 
 class Node {
@@ -135,6 +153,7 @@ class Node {
 let list = new LinkedList
 list.append("Amy")
 list.append("Joe")
+list.append("Joe")
 list.prepend("Aaron")
 list.append("Xaden")
 list.append("Zaine")
@@ -144,5 +163,6 @@ console.log(JSON.stringify(list, null, 2));
 // console.log(list.getTail())
 // console.log(list.at(7))
 // console.log(list.pop())
-console.log(list.contains("Paul"))
+// console.log(list.contains("Paul"))
+console.log(list.findIndex("Xaden"))
 
