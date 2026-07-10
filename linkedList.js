@@ -1,25 +1,19 @@
-// const nodeB = {
-//     value: 2,
-//     nextNode: null,
-// }
-
-// const nodeA = {
-//     value: 1,
-//     nextNode: nodeB,
-// }
-
-// const LinkedList = {
-//     head: nodeA,
-// }
+//  1. The node class
+class Node {
+    constructor(value = null, nextNode = null) {
+        this.value = value
+        this.nextNode = nextNode
+    }
+}
 
 
-
-
+// 2. The linked list class
 class LinkedList {
     constructor() {
         this.head = null
     }
 
+    // Adds a new node to the end of the list
     append(value) {
         if (this.head === null) {
             this.head = new Node(value)
@@ -32,6 +26,7 @@ class LinkedList {
         }
     }
 
+    // Adds a new node to the start of the list
     prepend(value) {
         if (this.head === null) {
             this.head = new Node(value)
@@ -41,7 +36,8 @@ class LinkedList {
         }
     }
 
-    size() { //return the total number of nodes in the list
+    // Returns the total number of nodes in the list
+    size() {
         if (this.head === null) {
             return 0;
         } else {
@@ -55,6 +51,7 @@ class LinkedList {
         }
     }
 
+    // returns the value of the head node
     getHead() {
         if (this.head === null) {
             return undefined
@@ -63,6 +60,7 @@ class LinkedList {
         }
     }
 
+    // returns the value of the last node
     getTail() {
         if (this.head === null) {
             return undefined
@@ -75,6 +73,7 @@ class LinkedList {
         }
     }
 
+    // returns the value of the node at the given index
     at(index) {
         if (this.head === null) {
             return undefined
@@ -96,6 +95,7 @@ class LinkedList {
         }
     }
 
+    // Removes the first node from the list
     pop() {
         if (this.head === null) {
             return undefined
@@ -107,6 +107,7 @@ class LinkedList {
         }
     }
 
+    // Returns true if the given value is in the list, otherwise false
     contains(data) {
         if (this.head === null) {
             return false
@@ -123,6 +124,7 @@ class LinkedList {
         }
     }
 
+    // Returns the index of the node containing the given value, or -1 if not found
     findIndex(data) {
         if (this.head === null) {
             return -1
@@ -141,6 +143,7 @@ class LinkedList {
         }
     }
 
+    // Converts node values to a formatted string in console
     toString() {
         if (this.head === null) {
             return ""
@@ -157,34 +160,43 @@ class LinkedList {
         }
     }
 
+    // Extra credit 1: Inserts new nodes with the given values at the provided index position
     insertAt(index, ...values) {
         if (this.size() < index || index < 0) {
-            throw new RangeError(`Out of bounds`)
+            throw new RangeError(`Index out of bounds`)
         }
 
-        if (this.head === null || this.size() === index) {
+        if (this.head === null) {
             values.forEach((value) => {
                 this.append(value)
             })
         } else {
-            let current = this.at(index)
-            let end = current.nextNode
-            values.forEach((value) => {
-                current.nextNode = new Node(value)
-                current = current.nextNode
-            })
-            current.nextNode = end
+            if (index === 0) {
+                // prepend items in reverse order
+                for (let i = values.length; i > 0; i--) {
+                    this.prepend(values[i - 1])
+                }
+            } else {
+                let current = this.at(index - 1)
+                let end = current.nextNode
+                values.forEach((value) => {
+                    current.nextNode = new Node(value)
+                    current = current.nextNode
+                })
+                current.nextNode = end
+            }
         }
         return this.toString()
     }
 
+    // Extra credit 2: Removed the node at the given index
     removeAt(index) {
 
         if (this.head === null) {
             throw new Error("The list is already empty")
         }
         if (index < 0 || index > this.size()) {
-            throw new RangeError(`Out of bounds`)
+            throw new RangeError(`Index out of bounds`)
         }
 
         if (index === 0) {
@@ -198,13 +210,6 @@ class LinkedList {
         }
 
         return this.toString()
-    }
-}
-
-class Node {
-    constructor(value = null, nextNode = null) {
-        this.value = value
-        this.nextNode = nextNode
     }
 }
 
@@ -229,4 +234,4 @@ console.log(JSON.stringify(list, null, 2));
 // console.log(list.findIndex("Xaden"))
 // console.log(list.toString())
 // console.log(list.insertAt(-1, "Persephone", "Maggie", "Harmony"))
-console.log(list.removeAt(8))
+// console.log(list.removeAt(8))
