@@ -234,46 +234,21 @@ class Node {
 
 
 // ================================ Testing
-let hm = new HashMap
-let hmhm = hm.hm
+// let hm = new HashMap
 
-hm.set('apple', 'red')
-hm.set('banana', 'yellow')
-hm.set('carrot', 'orange')
-hm.set('dog', 'brown')
-hm.set('elephant', 'gray')
-hm.set('frog', 'green')
-hm.set('grape', 'purple')
-hm.set('hat', 'black')
-hm.set('ice cream', 'white')
-hm.set('jacket', 'blue')
-hm.set('kite', 'pink')
-hm.set('lion', 'golden')
-hm.set('moon', 'silver')
-
-
-function printHm() {
-    hm.hm.forEach((bucket) => {
-    if (bucket.head !== null) {
-        console.log(bucket)
-    }
-    })
-}
-
-// printHm()
-
-// console.log(hm.has("pixies"))
-// console.log(`This is the updated bucket ${hm.remove("dog")}`)
-// console.log(refreshBuckets())
-// console.log(hm.keys())
-// console.log(hm.values())
-// console.log(hm.entries())
-console.log({
-    "keyCount": hm.keyCount,
-    "size": hm.capacity,
-})
-
-console.log(hm.hm)
+// hm.set('apple', 'red')
+// hm.set('banana', 'yellow')
+// hm.set('carrot', 'orange')
+// hm.set('dog', 'brown')
+// hm.set('elephant', 'gray')
+// hm.set('frog', 'green')
+// hm.set('grape', 'purple')
+// hm.set('hat', 'black')
+// hm.set('ice cream', 'white')
+// hm.set('jacket', 'blue')
+// hm.set('kite', 'pink')
+// hm.set('lion', 'golden')
+// hm.set('moon', 'silver')
 
 
 
