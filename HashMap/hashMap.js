@@ -123,6 +123,7 @@ class HashMap {
         return entries
     }
 
+    // Doubles the hashmap size when loadFactor is reached and rehashes entries
     checkLoadCapacity() {
         const expandHashMap = () => {
             let entries = this.entries()
