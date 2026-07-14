@@ -31,6 +31,7 @@ class HashMap {
 
         bucket.prepend(newNode)
         this.keyCount++
+        this.checkLoadCapacity()
     }
 
     // Retrieves the value of the given key
@@ -121,7 +122,23 @@ class HashMap {
         })
         return entries
     }
+
+    checkLoadCapacity() {
+        const expandHashMap = () => {
+            let entries = this.entries()
+            this.capacity = this.capacity * 2
+            this.clear()
+            this.keyCount = 0
+            entries.forEach(([key, value]) => {
+                this.set(key, value)
+            })
+        }
+
+        (this.keyCount / this.capacity) > this.loadFactor ? expandHashMap() : null  
+    }
 }
+
+
 
 
 class LinkedList {
@@ -214,6 +231,9 @@ class Node {
     }
 }
 
+
+
+// ================================ Testing
 let hm = new HashMap
 let hmhm = hm.hm
 
@@ -229,6 +249,8 @@ hm.set('ice cream', 'white')
 hm.set('jacket', 'blue')
 hm.set('kite', 'pink')
 hm.set('lion', 'golden')
+hm.set('moon', 'silver')
+
 
 function printHm() {
     hm.hm.forEach((bucket) => {
@@ -238,13 +260,20 @@ function printHm() {
     })
 }
 
-printHm()
+// printHm()
 
 // console.log(hm.has("pixies"))
 // console.log(`This is the updated bucket ${hm.remove("dog")}`)
 // console.log(refreshBuckets())
-console.log(hm.keys())
-console.log(hm.values())
-console.log(hm.entries())
+// console.log(hm.keys())
+// console.log(hm.values())
+// console.log(hm.entries())
+console.log({
+    "keyCount": hm.keyCount,
+    "size": hm.capacity,
+})
+
+console.log(hm.hm)
+
 
 
