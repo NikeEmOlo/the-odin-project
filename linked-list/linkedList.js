@@ -211,17 +211,17 @@ class LinkedList {
     }
 }
 
-// Testing values
-let list = new LinkedList
-list.append("Amy")
-list.append("Joe")
-list.append("Joe")
-list.prepend("Aaron")
-list.append("Xaden")
-list.append("Zaine")
-list.append("Simeon")
-list.append("Chris")
-list.append("Jimmy")
+// ========================================================Testing values
+// let list = new LinkedList
+// list.append("Amy")
+// list.append("Joe")
+// list.append("Joe")
+// list.prepend("Aaron")
+// list.append("Xaden")
+// list.append("Zaine")
+// list.append("Simeon")
+// list.append("Chris")
+// list.append("Jimmy")
 // console.log(JSON.stringify(list, null, 2));
 // console.log(list.size())
 // console.log(list.getHead())
