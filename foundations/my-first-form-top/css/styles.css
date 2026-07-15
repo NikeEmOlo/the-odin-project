@@ -1,0 +1,183 @@
+@font-face {
+    font-family: 'Flavors';
+    src: url('../fonts/Flavors-Regular.woff2') format('woff2'),
+        url('../fonts/Flavors-Regular.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+:root {
+    --content-padding: 42px;
+}
+
+html, body {
+    min-height: 100vh;
+    box-sizing: border-box;
+    border: 0;
+    padding: 0;
+    margin: 0;
+}
+
+body {
+    display: flex;
+    overflow: hidden;
+}
+
+.sidebar, .content {
+    display: flex;
+    min-height: 0;
+}
+
+/*----SIDEBAR SPECIFIC----*/
+
+.sidebar {
+    flex-direction: column;
+    justify-content: flex-start;
+    min-height: 100%;
+    flex-grow: 1;
+    flex-shrink: 1;
+    flex-basis: 33%;
+    background: center top no-repeat url("../img/casey-horner-75_s8iWHKLs-unsplash.webp");
+}
+
+.logo {
+    position: relative;
+    top: 16vh;
+    display: flex;
+    height: 100px;
+    width: 100%;
+    padding: 8px 0 8px 0;
+    gap: 24px;
+    align-items: center;
+    justify-content: center;
+    background-color: hsla(0, 0%, 0%, 0.175);
+}
+
+#logo-img {
+    max-height: 150px;
+    max-width: 100px;
+    height: auto;
+    width: 75px;
+}
+
+#logo-text {
+    font-family: 'Flavors', 'Courier New', Courier, monospace;
+    font-size: 56px;
+    font-weight: normal;
+    color: white;
+}
+
+/* --- CONTENT SECTION --- */
+
+.content {
+    display: flex;
+    position: relative;
+    top: 0vh;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 40px;
+    min-height: 100%;
+    flex-grow: 2;
+    flex-shrink: 2;
+    background-color: rgb(239, 242, 245);
+}
+
+.cta {
+    width: 80%;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 2vh;
+    padding-left: var(--content-padding);
+}
+
+
+form {
+    min-width: 100%;
+    max-height: fit-content;
+    padding: 24px 12px 24px 32px;
+    background-color: white;
+    font-family: monospace;
+    gap: 24px;
+    box-sizing: border-box;
+    box-shadow: grey 5px 10px 20px -10px;
+}
+
+fieldset {
+    display: flex;
+    flex-wrap: wrap;
+    width: clamp(175px, 60%, 100%);
+    gap: 24px;
+    border: none;
+    padding: none;
+}
+
+legend {
+    margin-bottom: 8px;
+    padding: 0;
+    font-family: 'Courier New', Courier, monospace;
+    font-weight: bold;
+    font-size: 3dvh;
+}
+
+.input-field {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    width: clamp(45%, 180px, 100%);
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 14px;
+}
+
+input, input:required {
+    height: 24px;
+    border: 1px solid;
+    border: 2px solid rgb(2, 78, 104);
+    border-radius: 10px;
+}
+
+input:user-invalid {
+    border-color: red;
+}
+
+input:user-valid {
+  border-color: green;
+}
+
+label {
+    width: 100%;
+    white-space: nowrap;
+}
+
+.input-field:has(input:required)>label::after {
+    content: "*"
+}
+
+button {
+    margin-left: var(--content-padding);
+    padding: 10px 20px;
+    border: none;
+    border-radius: 10px;
+    background-color: rgb(2, 78, 104);
+    color: rgb(239, 242, 245);
+    font-weight: bold;
+    font-size: 1rem;
+}
+
+.login {
+    margin-left: var(--content-padding);
+    font-family: 'Courier New', Courier, monospace;
+}
+
+a {
+    color: rgb(2, 78, 104);
+}
+
+a:visited {
+    color: rgb(255, 72, 0);
+}
+
+em {
+    font-weight: bold;
+}
+

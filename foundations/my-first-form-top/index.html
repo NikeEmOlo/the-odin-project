@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/styles.css">
+    <script src="js/script.js" defer></script>
+    <title>My First Form</title>
+</head>
+<body>
+    <div class="sidebar">
+        <div class="logo">
+            <img id="logo-img" src="img/odin-lined-logo.png" alt="The Odin Project logo (outline of a viking)">
+            <h1 id="logo-text">ODIN</h1>
+        </div>
+    </div>
+    <div class="content">
+        <p class="cta">This is definitely a real online service! We pray on vulnerable people to ensure you help us make millions each year. Sign up <em>now</em> to get started.</p>
+        <form action="https://my-server.com" method="post" id="my-form">
+            <fieldset class="personal-deets">
+                <legend>Let's do this!</legend>
+                <div class="input-field">
+                    <label for="first-name">FIRST NAME</label>
+                    <input required type="text" id="first-name" name="first_name" minlength="2">
+                </div>
+                <div class="input-field">
+                    <label for="last-name">LAST NAME</label>
+                    <input type="text" id="last-name" name="last_name" minlength="2">
+                </div>
+                <div class="input-field">
+                    <label for="email">EMAIL</label>
+                    <input required type="email" id="email" name="email">
+                </div>
+                <div class="input-field">
+                    <label for="phone">PHONE NUMBER</label>
+                    <input required type="tel" id="phone" name="phone" maxlength="17" minlength="7">
+                </div>
+                <div class="input-field">
+                    <label for="password">PASSWORD</label>
+                    <input required type="password" id="password" name="password" pattern="(?=.*[a-z])(?=.*[A-Z])(?=.*\d).{8,64}">
+                </div>
+                <div class="input-field">
+                    <label for="confirm-password">CONFIRM PASSWORD</label>
+                    <input required type="password" id="confirm-password" pattern="(?=.*[a-z])(?=.*[A-Z])(?=.*\d).{8,64}"> <!--This one has no name as I don't want it sent to the backend-->
+                </div>
+            </fieldset>
+        </form>
+        <button type="submit" class="submit-button" form="my-form">Create Account</button>
+        <p class="login">Already have an account?<a href="www.example.com">Log in</a></p>
+    </div>
+</body>
+</html>
