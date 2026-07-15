@@ -103,7 +103,7 @@ class LinkedList {
             let secondNode = this.head.nextNode
             let firstNode = this.head
             this.head = secondNode
-            return this.head
+            return firstNode
         }
     }
 
@@ -130,7 +130,7 @@ class LinkedList {
             return -1
         } else {
             let current = this.head
-            let count = 1
+            let count = 0
             while (current !== null) {
                 if (current.value === data) {
                     return count
@@ -193,7 +193,7 @@ class LinkedList {
         if (this.head === null) {
             throw new Error("The list is already empty")
         }
-        if (index < 0 || index >= this.size()) {
+        if (index < 0 || index > this.size()) {
             throw new RangeError(`Index out of bounds`)
         }
 
