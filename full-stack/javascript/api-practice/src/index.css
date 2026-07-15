@@ -1,0 +1,253 @@
+/* ---------------------------------------FONTS------------------------------------- */
+@font-face {
+    font-family: 'Open Sans';
+    src: url('./assets/fonts/OpenSans-Regular.woff2') format('woff2'),
+        url('./assets/fonts/OpenSans-Regular.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+/* ------------------------------------------CSS Reset -----------------------------------------*/
+*, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    min-height: 100vh;
+}
+
+body {
+    min-height: 100vh;
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+    font-family: 'Open Sans', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+img, picture, video, canvas, svg {
+    display: block;
+    max-width: 100%;
+}
+
+input, button, textarea, select {
+    font: inherit;
+}
+
+p, h1, h2, h3, h4, h5, h6 {
+    overflow-wrap: break-word;
+}
+/* ---------------------------------------Search Form------------------------------------------ */
+#main-page-wrap {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: linear-gradient(to bottom, #A0D5F4, #ffffff);
+
+    &.weather {
+        flex-direction: column;
+        justify-content: flex-start;
+        padding-top: 1rem;
+    }
+
+    &.dark-bg {
+        #search-form.weather #search-bar {
+            color: white;
+        }
+
+        #search-form.weather #search-bar::placeholder {
+            color: rgba(255, 255, 255, 0.55);
+        }
+
+        #search-form.weather #search-submit {
+            color: white;
+        }
+
+        .conditions,
+        .temp-label,
+        .temp-value,
+        .suggestion {
+            color: white;
+        }
+    }
+
+    .icon-wrap {
+        display: flex;
+        justify-content: center;
+        align-items: flex-end,
+    }
+
+    .weather-icon {
+        height: 300px;
+        width: auto;
+    }
+}
+
+@keyframes refresh-in {
+    from {
+        opacity: 0;
+        transform: translateY(16px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.info-wrap {
+    animation: refresh-in 0.4s ease-out;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+    width: 100%;
+
+    .conditions {
+        font-size: clamp(3rem, 8vw, 6rem);
+        font-weight: 700;
+        color: #1a2744;
+        line-height: 1.1;
+    }
+
+    .description {
+        color: white;
+        font-size: clamp(0.9rem, 2vw, 1.2rem);
+        font-weight: 400;
+        text-align: center;
+        max-width: 60ch;
+        padding: 0 1rem;
+    }
+
+    .data-wrap {
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        gap: clamp(1rem, 4vw, 3rem);
+        width: clamp(300px, 55vw, 680px);
+        background: rgba(255, 255, 255, 0.2);
+        backdrop-filter: blur(16px);
+        -webkit-backdrop-filter: blur(16px);
+        border: 1px solid rgba(255, 255, 255, 0.35);
+        border-radius: 1.5rem;
+        padding: clamp(1rem, 3vw, 1.75rem) clamp(1.5rem, 5vw, 3rem);
+    }
+
+    .stat-wrap {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 0.25rem;
+    }
+
+    .temp-label {
+        font-size: clamp(0.7rem, 1.5vw, 0.95rem);
+        font-weight: 500;
+        color: #1a2744;
+        white-space: nowrap;
+    }
+
+    .temp-value {
+        font-size: clamp(1.75rem, 4vw, 3rem);
+        font-weight: 700;
+        color: #1a2744;
+        line-height: 1;
+    }
+}
+
+#search-form {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+
+    &.weather {
+        margin-left: auto;
+        margin-bottom: 10vh;
+        flex-direction: row;
+        padding-right: 1rem;
+    }
+
+    &.weather #search-bar-wrap {
+        background: transparent;
+        border: none;
+        gap: 0.5rem;
+        padding: 0;
+    }
+
+    &.weather #search-bar {
+        background: rgba(255, 255, 255, 0.15);
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+        border: 1px solid rgba(255, 255, 255, 0.35);
+        border-radius: 2rem;
+        padding: 0.5rem clamp(0.75rem, 4vw, 2rem);
+        color: #1a2744;
+        max-height: 32px;
+    }
+
+    &.weather #search-bar::placeholder {
+        color: rgba(26, 39, 68, 0.6);
+    }
+
+    &.weather #search-submit {
+        background: transparent;
+        border: 2px solid rgba(255, 255, 255, 0.808);
+        border-radius: 3rem;
+        padding: 0 1rem;
+        max-height: 32px;
+        color: #1a2744;
+        box-shadow: 0 0 8px rgba(255, 255, 255, 0.791), 0 0 20px rgb(255, 255, 255), inset 0 0 8px rgba(255, 255, 255, 0.25);
+    }
+
+    #search-bar-wrap {
+        display: flex;
+        justify-content: space-between;
+        background-color: white;
+        border-radius: 2rem;
+        padding: 0.5rem 0.5rem 0.5rem clamp(0.75rem, 4vw, 2rem);
+        width: clamp(200px, 80vw, 500px);
+    }
+
+    #search-bar {
+        display: flex;
+        flex: 1 1 auto;
+        min-width: 8ch;
+        line-height: 0.8;
+        border: none;
+        padding: 0;
+        font-size: clamp(0.875rem, 2vw, 1.125rem);
+    }
+
+    #search-bar:focus-visible {
+        outline: none;
+    }
+
+    #search-submit {
+        background-color: #7abeea;
+        border: none;
+        border-radius: 1rem;
+        padding: 0.25rem 1rem;
+        font-size: clamp(0.875rem, 1vw, 1.125rem);
+        font-weight: 500;
+        color: white;
+    }
+
+
+    .suggestion-list {
+        display: flex;
+        flex-direction: column;
+        position: absolute;
+        top: 100%;
+        gap: 0.5rem;
+        padding: .5rem .25rem;
+    }
+
+    .suggestion {
+        list-style: none;
+        cursor: pointer;
+    }
+}
+
+
