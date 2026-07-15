@@ -1,0 +1,9 @@
+@font-face {
+    font-family: 'Metamorphous';
+    src: url('Metamorphous.woff2') format('woff2'),
+        url('Metamorphous.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+

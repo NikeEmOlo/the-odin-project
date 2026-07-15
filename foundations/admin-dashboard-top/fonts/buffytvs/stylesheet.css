@@ -1,0 +1,9 @@
+@font-face {
+    font-family: 'Buffied';
+    src: url('Buffied.woff2') format('woff2'),
+        url('Buffied.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
