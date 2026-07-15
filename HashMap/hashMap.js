@@ -291,9 +291,13 @@ class HashSet {
     // Add items to the hashMap
     set(key) {
         let set = this.hs[this.hash(key)]
-        set.add(key)
-        this.keyCount++
-        this.checkLoadCapacity()
+        if (set.has(key)) {
+            return
+        } else {
+            set.add(key)
+            this.keyCount++
+            this.checkLoadCapacity()
+        }
     }
 
     // Checks to see if a key is in the hashmap
