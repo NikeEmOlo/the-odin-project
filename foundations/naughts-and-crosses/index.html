@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./css/styles.css">
+    <script src="./js/script.js" defer></script>
+    <title>Document</title>
+</head>
+<body>
+    
+    <div class="wrapper">
+        <div class="header">
+            <ul class="scores">
+                <li id="player-1">Player 1:</li>
+                <li id="p1-score">0</li>
+                <li id="player-2">Player 2:</li>
+                <li id="p2-score">0</li>
+            </ul>
+            <button class="start-game">Start Game</button>
+            <button class="show-instructions">Instructions</button>
+        </div>
+        <div class="game-board">
+            <div class="cell" data-index="0"></div>
+            <div class="cell" data-index="1"></div>
+            <div class="cell" data-index="2"></div>
+            <div class="cell" data-index="3"></div>
+            <div class="cell" data-index="4"></div>
+            <div class="cell" data-index="5"></div>
+            <div class="cell" data-index="6"></div>
+            <div class="cell" data-index="7"></div>
+            <div class="cell" data-index="8"></div>
+        </div>
+        <dialog class="modal" id="modal">
+            <h1>How to play Naughts and Crosses</h1>
+            <p>You need two players for this game. Take it in turns to place your marker on the grid. The goal is to get three of your markers in a row, horizontally, vertically, or diagonally. That's it!")</p>
+            <button class="close-modal">close</button>
+        </dialog>
+    </div>
+</body>
+</html>

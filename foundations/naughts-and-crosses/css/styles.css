@@ -1,0 +1,93 @@
+html, body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.wrapper {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    width: 100%;
+    gap: 50px;
+    align-items: center;
+}
+
+.header {
+    display: flex;
+    box-sizing: border-box;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    width: 90vw;
+    padding: 32px 0;
+
+    .scores {
+        display: flex;
+        position: absolute;
+        left: 0;
+        gap: 8px;
+        list-style: none;
+        font-size: 24px;
+    }
+
+    #p2 {
+        margin-left: 5vw;
+    }
+
+
+    button {
+        width: 125px;
+        height: 48px;
+        line-height: 0;
+        border: none;
+        border-radius: 5px;
+        background-color: rgb(202, 74, 0);
+        color: white;
+    }
+
+    button.show-instructions {
+        position: absolute;
+        right: 0;
+        top: 32px;
+    }
+
+    button.start-game {
+        background-color: rgb(0, 0, 0);
+        color: white;
+    }
+
+
+}
+
+
+.game-board {
+    display: grid;
+    grid-template-rows: repeat(3, 250px);
+    grid-template-columns: repeat(3, 250px);
+    align-items: center;
+    justify-content: center;
+    justify-self: end;
+    pointer-events: none;
+}
+
+.cell {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-width: 250px;
+    min-height: 250px;
+    border: 1px solid black;
+
+    .marker {
+        font-size: 96px;
+    }
+}
