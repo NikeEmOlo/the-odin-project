@@ -1,3 +1,93 @@
+class LinkedList {
+    constructor() {
+        this.head = null
+    }
+
+    prepend(value) {
+        if (this.head === null) {
+            this.head = value
+        } else {
+            let pointer = this.head
+            this.head = value
+            this.head.nextNode = pointer
+        }
+    }
+
+    findValue(key) {
+        let current = this.head
+        while (current !== null) {
+            let nodeKey = Object.keys(current).find(k => k !== "nextNode")
+            if (nodeKey === key) {
+            return current[nodeKey]
+            }
+            current = current.nextNode
+        }
+        return null
+    }
+
+    findIndex(key) {
+        if (this.head === null) {
+            return null
+        } else {
+            let current = this.head
+            let count = 0
+            while (current !== null) {
+                let nodeKey = Object.keys(current).find(k => k !== "nextNode")
+                if (nodeKey === key) {
+                    return count
+                } else {
+                    current = current.nextNode
+                    count++
+                }
+            }
+            return null
+        }
+    }
+
+        // returns the value of the node at the given index
+    at(index) {
+        if (this.head === null) {
+            return undefined
+        } else {
+            let current = this.head
+            let count = 0;
+            while (current !== null) {
+                if(count === index) {
+                    break;
+                }
+                count++
+                current = current.nextNode
+            }
+            if (count !== index && current.nextNode === null) {
+                return undefined
+            } else {
+                return current
+            }
+        }
+    }
+
+    removeAt(index) {
+        if (index === 0) {
+            this.head = null
+        } else {
+            let parent = this.at(index -1)
+            let target = parent.nextNode
+            let child = target.nextNode
+
+            parent.nextNode = child
+        }
+
+        return
+    }
+}
+
+class Node {
+    constructor(key, value, nextNode = null) {
+        this[key] = value;
+        this.nextNode = nextNode;
+    }
+}
+
 class HashMap {
     constructor() {
         this.hm = [];
@@ -139,96 +229,89 @@ class HashMap {
     }
 }
 
-
-
-
-class LinkedList {
+// Extra credit: 
+// Create a HashSet class that behaves the same as a HashMap but only contains keys with no values
+class HashSet {
     constructor() {
-        this.head = null
+        this.hs = [];
+        this.loadFactor = 0.75;
+        this.capacity = 16;
+        this.keyCount = 0;
+
+        while (this.hs.length < this.capacity) {
+            this.hs.push(new Set)
+        }
+    }
+    
+    // The hash function
+    hash(key) {
+        let hashCode = 0;
+        let bucket;
+
+        const primeNumber = 31;
+        for (let i = 0; i < key.length; i++) {
+            hashCode = primeNumber * hashCode + key.charCodeAt(i);
+            bucket = hashCode % this.capacity
+        }
+
+        return bucket
     }
 
-    prepend(value) {
-        if (this.head === null) {
-            this.head = value
-        } else {
-            let pointer = this.head
-            this.head = value
-            this.head.nextNode = pointer
+    // Add items to the hashMap
+    set(key) {
+        let set = this.hs[this.hash(key)]
+        set.add(key)
+        this.keyCount++
+        this.checkLoadCapacity()
+    }
+
+    // Checks to see if a key is in the hashmap
+    has(key) {
+        return this.hs[this.hash(key)].has(key)
+    }
+
+    // Removes an entry determined by the input key
+    remove(key) {
+        return this.hs[this.hash(key)].delete(key) ? this.keyCount-- : "Key not found"
+    }
+
+    //Clears the hashmap
+    clear() {
+        this.hs = [];
+        while (this.hs.length < this.capacity) {
+            this.hs.push(new Set)
         }
     }
 
-    findValue(key) {
-        let current = this.head
-        while (current !== null) {
-            let nodeKey = Object.keys(current).find(k => k !== "nextNode")
-            if (nodeKey === key) {
-            return current[nodeKey]
+    // Returns an array containing all the keys inside the hashmap
+    keys() {
+        let allKeys = []
+        this.hs.forEach((set) => {
+            if (set.size > 0){
+                allKeys.push(...set)
             }
-            current = current.nextNode
-        }
-        return null
+        })
+        return allKeys
     }
 
-    findIndex(key) {
-        if (this.head === null) {
-            return null
-        } else {
-            let current = this.head
-            let count = 0
-            while (current !== null) {
-                let nodeKey = Object.keys(current).find(k => k !== "nextNode")
-                if (nodeKey === key) {
-                    return count
-                } else {
-                    current = current.nextNode
-                    count++
-                }
-            }
-            return null
-        }
+    // Prints an array of all keys
+    entries() {
+        return console.log(this.hs.keys())
     }
 
-        // returns the value of the node at the given index
-    at(index) {
-        if (this.head === null) {
-            return undefined
-        } else {
-            let current = this.head
-            let count = 0;
-            while (current !== null) {
-                if(count === index) {
-                    break;
-                }
-                count++
-                current = current.nextNode
-            }
-            if (count !== index && current.nextNode === null) {
-                return undefined
-            } else {
-                return current
-            }
-        }
-    }
-
-    removeAt(index) {
-        if (index === 0) {
-            this.head = null
-        } else {
-            let parent = this.at(index -1)
-            let target = parent.nextNode
-            let child = target.nextNode
-
-            parent.nextNode = child
+    // Doubles the hashmap size when loadFactor is reached and rehashes entries
+    checkLoadCapacity() {
+        const expandHashMap = () => {
+            let keys = this.keys()
+            this.capacity = this.capacity * 2
+            this.clear()
+            this.keyCount = 0
+            keys.forEach((key) => {
+                this.set(key)
+            })
         }
 
-        return
-    }
-}
-
-class Node {
-    constructor(key, value, nextNode = null) {
-        this[key] = value;
-        this.nextNode = nextNode;
+        (this.keyCount / this.capacity) > this.loadFactor ? expandHashMap() : null  
     }
 }
 
@@ -251,5 +334,18 @@ class Node {
 // hm.set('lion', 'golden')
 // hm.set('moon', 'silver')
 
+// let hs = new HashSet
 
-
+// hs.set('apple')
+// hs.set('banana')
+// hs.set('carrot',)
+// hs.set('dog')
+// hs.set('elephant')
+// hs.set('frog')
+// hs.set('grape')
+// hs.set('hat')
+// hs.set('ice cream')
+// hs.set('jacket')
+// hs.set('kite')
+// hs.set('lion')
+// // hs.set('moon')
