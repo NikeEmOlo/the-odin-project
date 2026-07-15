@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rock, Paper, Scissors!</title>
+    <link rel="stylesheet" href="css/style.css">
+    <script src="js/script.js" defer></script>
+</head>
+<body>
+    <div class="main-screen" id="start-game-screen">
+        <button class="start-button">Play best of five</button>
+    </div>
+    <div class="main-screen" id="human-choices">
+        <ul class="human-choices-list">
+            <li class="human-choices-option">
+                <button class="human-choices-button" id="rock">
+                    <img class="human-choices-img" id="rock-img" src="./img/human_fist.png" alt="a human fist cartoon"></button>
+                <h4 class="human-choices-caption">Rock</h4>
+            </li>
+            <li class="human-choices-option">
+                <button class="human-choices-button" id="paper">
+                    <img class="human-choices-img" src="./img/human_paper.png" alt="an open hand cartoon"></button>
+                <h4 class="human-choices-caption">Paper</h4>
+            </li>
+            <li class="human-choices-option">
+                <button class="human-choices-button" id="scissors">
+                    <img class="human-choices-img" src="./img/human_scissors.png" alt="a hand making a peace sign cartoon"></button>
+                <h4 class="human-choices-caption">Scissors</h4>
+            </li>
+        </ul>
+    </div>
+    <div class="main-screen" id="result-screen">
+        <div class="split-screen-wrapper">
+            <h4 class="score-counter" id="human-counter"></h4>
+            <h1 class = "result-text" id="human-choice-text"></h1>
+            <img class="result-image" id="human-result-image">
+        </div>
+        <div class="split-screen-wrapper">
+            <img class="result-image" id="computer-result-image">
+            <h1 class = "result-text" id="computer-choice-text"></h1>
+            <h4 class="score-counter" id="computer-counter"></h4>
+        </div>
+        <button class="start-button" id="round">PLAY AGAIN</button>
+        <h1 id = "who-won"></h1>
+    </div>
+</body>
+</html>
