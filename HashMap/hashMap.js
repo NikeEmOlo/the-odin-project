@@ -61,7 +61,7 @@ class LinkedList {
 
         // returns the value of the node at the given index
     at(index) {
-        if (index < 0 || index >= buckets.size()) {
+        if (index < 0 || index >= this.size()) {
             throw new Error("Trying to access index out of bounds");
         }    
         if (this.head === null) {
@@ -87,18 +87,20 @@ class LinkedList {
     removeAt(index) {
         if (index < 0 || index >= this.size()) {
             throw new Error("Trying to access index out of bounds");
-        }
-        if (index === 0) {
-            this.head = null
         } else {
-            let parent = this.at(index -1)
-            let target = parent.nextNode
-            let child = target.nextNode
+            if (index !== 0) {
+                let parent = this.at(index -1)
+                let target = parent.nextNode
+                let child = target.nextNode
 
-            parent.nextNode = child
+                parent.nextNode = child
+            } else {
+                let target = this.head
+                let child = target.nextNode
+
+                target = child
+            }
         }
-
-        return
     }
 }
 
@@ -239,7 +241,7 @@ class HashMap {
                 }
             }
         })
-        return entries
+        return console.log(entries)
     }
 
     // Doubles the hashmap size when loadFactor is reached and rehashes entries
@@ -325,7 +327,7 @@ class HashSet {
 
     // Prints an array of all keys
     entries() {
-        return console.log(this.hs.keys())
+        return console.log(this.keys())
     }
 
     // Doubles the hashmap size when loadFactor is reached and rehashes entries
@@ -380,4 +382,4 @@ class HashSet {
 // // hs.set('moon')
 
 
-// console.log(hs.keys())
+// hs.entries()
