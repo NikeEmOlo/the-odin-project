@@ -3,6 +3,21 @@ class LinkedList {
         this.head = null
     }
 
+    // Returns the total number of nodes in the list
+    size() {
+        if (this.head === null) {
+            return 0;
+        } else {
+            let count = 0;
+            let current = this.head
+            while (current !== null) {
+                count++
+                current = current.nextNode
+            }
+            return count;
+        }
+    }
+
     prepend(value) {
         if (this.head === null) {
             this.head = value
@@ -46,6 +61,9 @@ class LinkedList {
 
         // returns the value of the node at the given index
     at(index) {
+        if (index < 0 || index >= buckets.size()) {
+            throw new Error("Trying to access index out of bounds");
+        }    
         if (this.head === null) {
             return undefined
         } else {
@@ -67,6 +85,9 @@ class LinkedList {
     }
 
     removeAt(index) {
+        if (index < 0 || index >= this.size()) {
+            throw new Error("Trying to access index out of bounds");
+        }
         if (index === 0) {
             this.head = null
         } else {
