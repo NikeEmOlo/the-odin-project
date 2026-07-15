@@ -112,10 +112,10 @@ class Node {
 }
 
 class HashMap {
-    constructor() {
+    constructor(loadFactor = 0.75, capacity = 16) {
         this.hm = [];
-        this.loadFactor = 0.75;
-        this.capacity = 16;
+        this.loadFactor = loadFactor;
+        this.capacity = capacity;
         this.keyCount = 0;
 
         while (this.hm.length < this.capacity) {
