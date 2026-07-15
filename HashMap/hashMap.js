@@ -149,7 +149,7 @@ class HashMap {
             let nodeKey = Object.keys(node).find(k => k !== "nextNode")
             node[nodeKey] = value
         }
-        
+
         this.checkLoadCapacity()
     }
 
@@ -363,21 +363,21 @@ class HashSet {
 // hm.set('lion', 'golden')
 // hm.set('moon', 'silver')
 
-let hs = new HashSet
+// let hs = new HashSet
 
-hs.set('apple')
-hs.set('banana')
-hs.set('carrot',)
-hs.set('dog')
-hs.set('elephant')
-hs.set('frog')
-hs.set('grape')
-hs.set('hat')
-hs.set('ice cream')
-hs.set('jacket')
-hs.set('kite')
-hs.set('lion')
-// hs.set('moon')
+// hs.set('apple')
+// hs.set('banana')
+// hs.set('carrot',)
+// hs.set('dog')
+// hs.set('elephant')
+// hs.set('frog')
+// hs.set('grape')
+// hs.set('hat')
+// hs.set('ice cream')
+// hs.set('jacket')
+// hs.set('kite')
+// hs.set('lion')
+// // hs.set('moon')
 
 
-console.log(hs.keys())
+// console.log(hs.keys())

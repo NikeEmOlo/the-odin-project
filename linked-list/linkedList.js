@@ -113,7 +113,7 @@ class LinkedList {
             return false
         } else {
             let current = this.head
-            while (current.nextNode !== null) {
+            while (current !== null) {
                 if (current.value === data) {
                     return true
                 } else {
@@ -131,7 +131,7 @@ class LinkedList {
         } else {
             let current = this.head
             let count = 1
-            while (current.nextNode !== null) {
+            while (current !== null) {
                 if (current.value === data) {
                     return count
                 } else {
@@ -150,11 +150,10 @@ class LinkedList {
         } else {
             let current = this.head
             let array = []
-            while (current.nextNode !== null) {
+            while (current !== null) {
                 array.push(current.value)
                 current = current.nextNode
             }
-            array.push(current.value)
             array.push("null")
             return array.join(" >> ")
         }
@@ -162,7 +161,7 @@ class LinkedList {
 
     // Extra credit 1: Inserts new nodes with the given values at the provided index position
     insertAt(index, ...values) {
-        if (this.size() <= index || index < 0) {
+        if (this.size() < index || index < 0) {
             throw new RangeError(`Index out of bounds`)
         }
 
