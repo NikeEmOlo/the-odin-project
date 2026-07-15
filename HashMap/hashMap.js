@@ -140,8 +140,16 @@ class HashMap {
         let bucket = this.hm[this.hash(key)]
         let newNode = new Node(key, value)
 
-        bucket.prepend(newNode)
-        this.keyCount++
+        if (!this.has(key)) {
+            bucket.prepend(newNode)
+            this.keyCount++
+        } else {
+            let index = bucket.findIndex(key)
+            let node = bucket.at(index)
+            let nodeKey = Object.keys(node).find(k => k !== "nextNode")
+            node[nodeKey] = value
+        }
+        
         this.checkLoadCapacity()
     }
 
@@ -355,18 +363,21 @@ class HashSet {
 // hm.set('lion', 'golden')
 // hm.set('moon', 'silver')
 
-// let hs = new HashSet
+let hs = new HashSet
 
-// hs.set('apple')
-// hs.set('banana')
-// hs.set('carrot',)
-// hs.set('dog')
-// hs.set('elephant')
-// hs.set('frog')
-// hs.set('grape')
-// hs.set('hat')
-// hs.set('ice cream')
-// hs.set('jacket')
-// hs.set('kite')
-// hs.set('lion')
-// // hs.set('moon')
+hs.set('apple')
+hs.set('banana')
+hs.set('carrot',)
+hs.set('dog')
+hs.set('elephant')
+hs.set('frog')
+hs.set('grape')
+hs.set('hat')
+hs.set('ice cream')
+hs.set('jacket')
+hs.set('kite')
+hs.set('lion')
+// hs.set('moon')
+
+
+console.log(hs.keys())
