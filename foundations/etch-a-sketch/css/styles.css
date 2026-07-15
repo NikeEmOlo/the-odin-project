@@ -1,0 +1,74 @@
+@font-face {
+  font-family: "annie";
+  src: url("../fonts/AnnieUseYourTelescope-Regular.woff2") format("woff2");
+  font-weight: normal;
+  font-style: normal;
+  font-display: fallback;
+}
+
+html, body {
+    padding: 0;
+    margin: 0;
+    height: 100%;
+    font-family: "annieUYT", 'Courier New', Courier, monospace
+}
+
+/* NAVIGATION */
+.ctrl {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 32px;
+    padding: 16px;
+    margin: 2%;
+}
+
+.ctrl-butt {
+    min-width: 100px;
+    font-family: "annie";
+    font-size: 24px;
+    padding: 4px 16px;
+    background-color: black;
+    color: white;
+    border: none;
+    border-radius: 5px;
+}
+
+.ctrl-butt:hover {
+    transform: scale(0.9);
+    transition: all 0.4s;
+}
+
+/* CANVAS AREA */
+#canvas {
+    display: flex;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    height: 800px;
+    width: 800px;
+    margin: 0 auto;
+    border: 4px solid black;
+    user-select: none;
+    -webkit-user-drag: none;
+}
+
+.rendered {
+    display: flex;
+    box-sizing: border-box;
+    flex: 1;
+    border: 0.5px solid rgb(214, 214, 214);
+    margin: 0;
+    padding: 0;
+    user-select: none;
+    -webkit-user-drag: none;
+}
+
+
+/* COLOUR PICKER */
+#color-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 24px;
+    gap: 16px;
+}
