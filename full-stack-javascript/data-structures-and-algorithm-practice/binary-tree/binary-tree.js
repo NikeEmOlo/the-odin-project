@@ -73,9 +73,21 @@ class Tree {
     }
 
     levelOrderForEach(callback) {
-        let node = this.root
+        let q = [this.root,]
+        let i = 0;
+        let results = []
 
-        // 
+        while (i < q.length) {
+            let current = q[i]
+            i++
+            if (current === null) continue;
+
+            results.push(callback(current.data))
+
+            q.push(current.left)
+            q.push(current.right)
+        }
+        return results
     }
 }
 
@@ -116,3 +128,4 @@ let tree = new Tree([1, 7, 4, 23, 8, 9, 4, 3, 5, 7, 9, 67, 6345, 324])
 // console.log(tree.root)
 // console.log(tree.includes())
 // console.log(tree.delete())
+tree.levelOrderForEach()
