@@ -41,6 +41,42 @@ class Tree {
 
         return current;
     }
+
+    delete(value, current = this.root) {
+        // Base case
+        if (current === null) {
+            return 
+        }
+
+        //Are you this number?
+        if(current.data === value) {
+           if(current.left === null && current.right === null) {
+                return null
+            } else if (current.left === null || current.right === null) { //If one child
+                let childNode = Object.entries(current).find(key => current[key] !== null) 
+                return childNode
+            } else if (current.left !== null && current.right !== null) { //if two children
+                //take the right node
+                let childNode = current.right
+                while (childNode.left !== null) {
+                    childNode = childNode.left
+                }
+                current.data = childNode.data
+                current.right = this.delete(childNode.data, current.right)
+                return current
+            }
+        } else {
+            value > current.data ? current.right = this.delete(value, current.right) : current.left = this.delete(value, current.left)
+        }
+        console.log(current)
+        return current
+    }
+
+    levelOrderForEach(callback) {
+        let node = this.root
+
+        // 
+    }
 }
 
 function buildTree(array) {
@@ -79,3 +115,4 @@ let tree = new Tree([1, 7, 4, 23, 8, 9, 4, 3, 5, 7, 9, 67, 6345, 324])
 // prettyPrint(tree.root)
 // console.log(tree.root)
 // console.log(tree.includes())
+// console.log(tree.delete())
