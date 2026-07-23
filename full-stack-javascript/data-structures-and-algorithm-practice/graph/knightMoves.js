@@ -83,9 +83,13 @@ function knightMoves(from, to) {
         let newMoves = []
         let parent = queue.shift()
 
+
         // check if any of the next moves have already been visited
-        moves.forEach((index) => { // Only tiles not visited already, added to newMoves list
-            visited.includes(index) ? null : newMoves.push(node(index, parent))
+        moves.forEach((index) => {
+            if (!visited.includes(index)) {
+                visited.push(index)
+                newMoves.push(node(index, parent))
+            }
         })
 
         // push non-visited tiles to the queue
@@ -132,4 +136,4 @@ function knightMoves(from, to) {
 // console.log(calcNextMoves(27))
 // console.log(getCoord(27))
 // console.log(getIndex([5, 4]))
-console.log(knightMoves([7,3], [0, 3]))
+console.log(knightMoves([7,3], [6, 2]))
