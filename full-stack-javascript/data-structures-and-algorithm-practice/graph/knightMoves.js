@@ -16,21 +16,6 @@
 // 48 49 50 51 52 53 54 55
 // 56 57 58 59 60 61 62 63
 
-
-
-// created the "board" where n = number of rows and columns
-function createBoard(n) {
-    let board = []
-    let y = 0
-    let x = 0
-    for (let i = 0; i < (n * n); i++) {
-        x = Math.floor(i / n)
-        y = i % n
-        board.push([x, y])
-    }
-    return board
-}
-
 //Calculates the index of all potential next moves
 function calcNextMoves(index) {
     let [x, y] = getCoord(index)
@@ -80,8 +65,6 @@ function node(data, parent) {
 }
 
 function knightMoves(from, to) {
-    const board = createBoard(8)
-
     let [x, y] = from
     let [a, b] = to
     let startIndex = getIndex(from)
@@ -149,4 +132,4 @@ function knightMoves(from, to) {
 // console.log(calcNextMoves(27))
 // console.log(getCoord(27))
 // console.log(getIndex([5, 4]))
-// console.log(knightMoves([7,3], [0, 3]))
+console.log(knightMoves([7,3], [0, 3]))
