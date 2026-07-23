@@ -75,7 +75,6 @@ function knightMoves(from, to) {
     let start = node(startIndex, null)
     visited.push(startIndex)
     queue.push(start)
-    console.log(queue)
 
     while (x !== a || y !== b) { // As long as we are not on the target tile
 
