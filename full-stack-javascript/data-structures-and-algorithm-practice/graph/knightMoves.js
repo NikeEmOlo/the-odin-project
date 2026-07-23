@@ -78,11 +78,11 @@ function knightMoves(from, to) {
     console.log(queue)
 
     while (x !== a || y !== b) { // As long as we are not on the target tile
+
         // Find all potential moves
-        let moves = calcNextMoves(queue[0].data) //gets a list of indexes of potential coordinates
+        let moves = calcNextMoves(queue[0].data)
         let newMoves = []
         let parent = queue.shift()
-
 
         // check if any of the next moves have already been visited
         moves.forEach((index) => {
@@ -92,11 +92,10 @@ function knightMoves(from, to) {
             }
         })
 
-        // push non-visited tiles to the queue
+        // push unvisited tiles to the queue
         if (newMoves === []) { // 
             break
         } else {
-            visited.push(parent.data) // Adds the first item in queue to visited
             queue.push(...newMoves) // Adds the new moves to the queue
             x = getCoord(queue[0].data)[0]
             y = getCoord(queue[0].data)[1]
@@ -115,7 +114,6 @@ function knightMoves(from, to) {
     }
 
     let result = calcSteps(queue[0])
-    console.log(result)
     
     function buildOutput(result) {
         const noun = result.steps === 1 ? 'move' : 'moves';
