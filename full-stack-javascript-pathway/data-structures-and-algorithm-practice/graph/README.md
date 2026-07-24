@@ -28,4 +28,4 @@ node knightMoves.js
 Edit the `knightMoves([...], [...])` call at the bottom of the file to try different start and target squares.
 
 ## Learnings
-This project made the connection between abstract graph theory and a concrete problem click — the chessboard is just a graph in disguise, and BFS falls naturally out of wanting the *shortest* path rather than any path. Tracking each node's parent turned out to be the neat trick for recovering the route itself, not just the number of moves.
+This project made the connection between abstract graph theory and a concrete problem click. The chessboard is a graph, and BFS falls naturally out of wanting the *shortest* path rather than any path. I was able to practice a little bit of recursion when counting the nodes in a linked list, following on from the previous project. On review, I noticed I could have improved the efficiency of the code by using a Set to save unique values to the visited array.
